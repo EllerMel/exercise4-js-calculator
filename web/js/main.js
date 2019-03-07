@@ -1,16 +1,24 @@
 var num1 = [];
 console.log(num1);
 var operator1 = "";
+var calDisplay = document.getElementById('calculator-display'); 
+calDisplay.innerHTML = "";
+
+function myClear(){
+    num1 = [];
+    calDisplay.innerHTML = "";
+}
 
 function myFunction(x) {
-    document.getElementById('calculator-display').innerHTML += x;
+    //collect numbers from buttons pressed and push them ito an array
+    calDisplay.innerHTML += x;
 
     num1.push(x);
     console.log(num1);
 }
 
 function mySwitch(y) {
-    //turn array into number
+    //turn first array into number
     number1 = Number(num1.join(''));
     console.log(number1);
 
@@ -18,18 +26,17 @@ function mySwitch(y) {
     operator1 = y;
     console.log(operator1);
 
-    num1 = [];
-    document.getElementById('calculator-display').innerHTML = "";
+    myClear();
     console.log(num1);
 }
 
 function myEqual() {
-    //turn array into number
+    //turn second array into number
     number2 = Number(num1.join(''));
     console.log(number2);
     console.log(number1);
 
-    document.getElementById('calculator-display').innerHTML = "";
+    calDisplay.innerHTML = "";
 
     switch (operator1) {
         case 'add':
@@ -46,11 +53,6 @@ function myEqual() {
             break;                     
         default:
     }
-
-    document.getElementById('calculator-display').innerHTML = sum;
-}
-
-function myClear(){
-    num1 = [];
-    document.getElementById('calculator-display').innerHTML = "";
+    console.log(sum);
+    calDisplay.innerHTML = sum;
 }
